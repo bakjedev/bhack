@@ -16,7 +16,7 @@ public class ragesprint implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-
+        // this is like rage sprint but scuffed, works on servers
         KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("RageSprint", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_V, "bhack"));
 
         Sprint=!Sprint;
