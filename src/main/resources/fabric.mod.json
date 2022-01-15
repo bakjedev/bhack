@@ -22,7 +22,7 @@
       "net.bakje.bhack.bhack",
       "net.bakje.bhack.yaw",
       "net.bakje.bhack.ragesprint",
-      "net.bakje.bhack.badfly"
+      "net.bakje.bhack.badspeed"
     ]
   },
   "mixins": [
