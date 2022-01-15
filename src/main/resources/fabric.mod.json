@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "bhack",
+  "version": "${version}",
+
+  "name": "bhack",
+  "description": "the best 1.18.1 client out there right now",
+  "authors": [
+    "bakje"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "MIT",
+  "icon": "assets/bhack/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.bakje.bhack.bhack",
+      "net.bakje.bhack.yaw",
+      "net.bakje.bhack.ragesprint",
+      "net.bakje.bhack.badfly"
+    ]
+  },
+  "mixins": [
+    "bhack.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17",
+    "fabric-key-binding-api-v1": "*",
+    "fabric-api-base": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
