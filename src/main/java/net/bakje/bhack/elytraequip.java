@@ -38,7 +38,7 @@ public class elytraequip implements ClientModInitializer {
                     // this do the finding of the elytra in your inventory
                     for (int slot= 0; slot < 36; slot++){
                         ItemStack stack = mc.player.getInventory().getStack(slot);
-                        if (stack.getItem() instanceof ElytraItem) {
+                        if (stack.getItem() instanceof ElytraItem && slot<=8) {
                             elytraSlot = slot;
                             // this thing make it do the silent swap
                             mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(elytraSlot));
