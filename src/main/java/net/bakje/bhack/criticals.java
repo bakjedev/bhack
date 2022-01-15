@@ -29,9 +29,12 @@ public class criticals implements ClientModInitializer {
             if (!crits){
                 if (mc.player != null) {
                     if (mc.player.isOnGround()) {
+                        // gets players current pos
                         double x = mc.player.getX();
                         double y = mc.player.getY();
                         double z = mc.player.getZ();
+                        // basically this makes you go up and down a little the entire time
+                        // this sometimes needs you to sprint, use RageSprint
                         mc.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.PositionAndOnGround(x, y + 0.06, z, false));
                         mc.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.PositionAndOnGround(x, y, z, false));
                     }
