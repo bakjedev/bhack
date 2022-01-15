@@ -31,6 +31,7 @@ public class badfly implements ClientModInitializer {
             if(!bruhfly) {
                 if (mc.player != null)
                     return;
+                mc.player.setVelocity(mc.player.getVelocity().x*0.1,0.1,mc.player.getVelocity().z*0.1);
             }
         });
     }
