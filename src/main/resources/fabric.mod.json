@@ -23,7 +23,8 @@
       "net.bakje.bhack.yaw",
       "net.bakje.bhack.ragesprint",
       "net.bakje.bhack.badspeed",
-      "net.bakje.bhack.elytraequip"
+      "net.bakje.bhack.elytraequip",
+      "net.bakje.bhack.criticals"
     ]
   },
   "mixins": [
