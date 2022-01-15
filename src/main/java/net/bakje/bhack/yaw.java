@@ -29,7 +29,7 @@ public class yaw implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("45Yaw", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_Y, "bhack"));
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("45Yaw", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         Yaw=!Yaw;
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();

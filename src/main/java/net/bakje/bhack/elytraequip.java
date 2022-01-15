@@ -27,7 +27,7 @@ public class elytraequip implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         //this is for testing purposes. and learning how to find items in inventory, basically useless
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("Equip Elytra (test)", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_B, "bhack"));
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("Equip Elytra (test)", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 

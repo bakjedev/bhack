@@ -24,7 +24,8 @@
       "net.bakje.bhack.ragesprint",
       "net.bakje.bhack.badspeed",
       "net.bakje.bhack.elytraequip",
-      "net.bakje.bhack.criticals"
+      "net.bakje.bhack.criticals",
+      "net.bakje.bhack.server"
     ]
   },
   "mixins": [

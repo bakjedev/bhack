@@ -16,7 +16,7 @@ public class criticals implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("Criticals", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_P, "bhack"));
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("Criticals", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         crits =!crits;
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();

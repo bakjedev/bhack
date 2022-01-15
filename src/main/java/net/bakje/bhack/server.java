@@ -7,31 +7,22 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.LiteralText;
-import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
 
-public class ragesprint implements ClientModInitializer {
+public class server implements ClientModInitializer {
 
-    private boolean Sprint;
+
+    private Object server;
 
     @Override
     public void onInitializeClient() {
-
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("RageSprint", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
-
-        Sprint=!Sprint;
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("ServerBrand", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 
             while (binding1.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set RageSprint to " + Sprint), false);
-                Sprint=!Sprint;
-            }
-
-            if (!Sprint){
-                if (mc.player != null) {
-                    mc.player.setSprinting(true);
-                }
+                server=mc.player.getServerBrand();
+                client.player.sendMessage(new LiteralText("[bhack] " + server), false);
             }
         });
     }

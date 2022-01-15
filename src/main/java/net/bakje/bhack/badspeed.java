@@ -16,7 +16,7 @@ public class badspeed implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         // dont use this, this is just me testing with setVelocity
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("LongJump", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_B, "bhack"));
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("LongJump", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         bruhspeed =!bruhspeed;
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
