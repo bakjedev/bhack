@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 import net.minecraft.text.LiteralText;
 import org.lwjgl.glfw.GLFW;
 
@@ -30,6 +31,9 @@ public class ragesprint implements ClientModInitializer {
             if (!Sprint){
                 if (mc.player != null) {
                     mc.player.setSprinting(true);
+                    if (mc.player.sidewaysSpeed !=0 || mc.player.forwardSpeed !=0){
+                        mc.player.networkHandler.sendPacket(new ClientCommandC2SPacket(mc.player, ClientCommandC2SPacket.Mode.START_SPRINTING));
+                    }
                 }
             }
         });
