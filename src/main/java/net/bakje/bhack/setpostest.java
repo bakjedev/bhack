@@ -28,6 +28,9 @@ public class setpostest implements ClientModInitializer {
 
             if (!setpostest){
                 if (mc.player != null) {
+                    // works on servers with no/bad anticheat
+                    // also works as a weird elytra fly
+                    // idk im just putting in random shit
                     double playerX = mc.player.getX();
                     double playerY = mc.player.getY();
                     double playerZ = mc.player.getZ();
