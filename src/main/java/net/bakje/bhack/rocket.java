@@ -35,14 +35,16 @@ public class rocket implements ClientModInitializer {
             if (!rocket){
                 if (mc.player != null) {
                     int currentSlot = mc.player.getInventory().selectedSlot;
-                    for (int slot= 0; slot < 36; slot++){
+                    for (int slot= 0; slot < 36; slot++) {
                         ItemStack stack = mc.player.getInventory().getStack(slot);
-                        if (stack.getItem() instanceof FireworkRocketItem && slot<=8) {
+                        if (stack.getItem() instanceof FireworkRocketItem && slot <= 8) {
                             rocketSlot = slot;
                             // this thing make it do the silent swap
                             mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(rocketSlot));
                             mc.player.networkHandler.sendPacket(new PlayerInteractItemC2SPacket(Hand.MAIN_HAND));
                             mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(currentSlot));
+                        }
+                    }
                 }
             }
         });
