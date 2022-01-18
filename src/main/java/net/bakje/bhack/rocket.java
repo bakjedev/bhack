@@ -1,6 +1,5 @@
 package net.bakje.bhack;
 
-import net.bakje.bhack.util.TimerUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -20,7 +19,6 @@ public class rocket implements ClientModInitializer {
 
     private boolean rocket;
     private int rocketSlot;
-    public TimerUtil timer = new TimerUtil();
 
     @Override
     public void onInitializeClient() {
@@ -35,14 +33,11 @@ public class rocket implements ClientModInitializer {
                 for (int slot= 0; slot < 36; slot++){
                     ItemStack stack = mc.player.getInventory().getStack(slot);
                     if (stack.getItem() instanceof FireworkRocketItem && slot<=8) {
-                        if(timer.passed(200)) {
-                            rocketSlot = slot;
-                            // this thing make it do the silent swap
-                            mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(rocketSlot));
-                            mc.player.networkHandler.sendPacket(new PlayerInteractItemC2SPacket(Hand.MAIN_HAND));
-                            mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(currentSlot));
-                            timer.reset();
-                        }
+                        rocketSlot = slot;
+                        // this thing make it do the silent swap
+                        mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(rocketSlot));
+                        mc.player.networkHandler.sendPacket(new PlayerInteractItemC2SPacket(Hand.MAIN_HAND));
+                        mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(currentSlot));
                     }
                 }
             }
