@@ -26,7 +26,8 @@
       "net.bakje.bhack.elytraequip",
       "net.bakje.bhack.criticals",
       "net.bakje.bhack.server",
-      "net.bakje.bhack.setpostest"
+      "net.bakje.bhack.setpostest",
+      "net.bakje.bhack.rocket"
     ]
   },
   "mixins": [
