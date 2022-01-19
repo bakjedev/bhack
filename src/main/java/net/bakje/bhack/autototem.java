@@ -1,5 +1,6 @@
 package net.bakje.bhack;
 
+import net.bakje.bhack.util.TimerUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -21,7 +22,7 @@ import org.lwjgl.glfw.GLFW;
 public class autototem implements ClientModInitializer {
 
     private boolean AutoTotem;
-
+    public TimerUtil timer = new TimerUtil();
     @Override
     public void onInitializeClient() {
         KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("shittyAutoTotem", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
@@ -45,7 +46,10 @@ public class autototem implements ClientModInitializer {
                                     mc.player.getInventory().selectedSlot = slot; // select it
                                     mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(slot)); // send that to server
                                 }
-                                mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(PlayerActionC2SPacket.Action.SWAP_ITEM_WITH_OFFHAND, BlockPos.ORIGIN, Direction.DOWN)); // honestly dont get the blockpos.origin and direction.down part this line is skidded
+                                if (timer.passed(100)) {
+                                    mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(PlayerActionC2SPacket.Action.SWAP_ITEM_WITH_OFFHAND, BlockPos.ORIGIN, Direction.DOWN)); // honestly dont get the blockpos.origin and direction.down part this line is skidded
+                                    timer.reset();
+                                }
                             }
                     }
                 }
