@@ -27,7 +27,8 @@
       "net.bakje.bhack.criticals",
       "net.bakje.bhack.server",
       "net.bakje.bhack.setpostest",
-      "net.bakje.bhack.rocket"
+      "net.bakje.bhack.rocket",
+      "net.bakje.bhack.autototem"
     ]
   },
   "mixins": [
