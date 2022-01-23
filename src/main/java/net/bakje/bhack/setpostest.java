@@ -6,6 +6,8 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.text.LiteralText;
 import org.lwjgl.glfw.GLFW;
 
@@ -35,6 +37,8 @@ public class setpostest implements ClientModInitializer {
                     double playerY = mc.player.getY();
                     double playerZ = mc.player.getZ();
                     mc.player.setPos(playerX, playerY+1, playerZ);
+
+
                 }
             }
         });
