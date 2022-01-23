@@ -55,7 +55,7 @@ public abstract class ClientPlayerEntityMixin {
             ci.cancel();
         }
     }
-    public void dotDBypsas() {
+    public void dotDBypsas() { //shhhhhhh
         if(mc.player.getVehicle() == null) {
             return;
         }
