@@ -40,7 +40,7 @@ public abstract class ClientPlayerEntityMixin {
 
         if(message.equals(".toggle fly")) {
             mc.player.getAbilities().allowFlying = !mc.player.getAbilities().allowFlying;
-            if (mc.player.getAbilities().allowFlying) {mc.player.sendMessage(new LiteralText("[bhack] Toggled fly off."), false);} else {mc.player.sendMessage(new LiteralText("[bhack] Toggled fly on."), false);}
+            if (mc.player.getAbilities().allowFlying) {mc.player.sendMessage(new LiteralText("[bhack] Toggled fly on."), false);} else {mc.player.sendMessage(new LiteralText("[bhack] Toggled fly off."), false);}
             ci.cancel();
         }
 

@@ -22,7 +22,9 @@
       "net.bakje.bhack.bhack",
       "net.bakje.bhack.yaw",
       "net.bakje.bhack.elytraequip",
-      "net.bakje.bhack.autototem"
+      "net.bakje.bhack.autototem",
+      "net.bakje.bhack.ecmefly",
+      "net.bakje.bhack.dupe"
     ]
   },
   "mixins": [
