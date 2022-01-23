@@ -19,14 +19,15 @@ public abstract class ClientPlayerEntityMixin {
     public void onChatMessage(String message, CallbackInfo ci) {
 
         if(message.equals(".help")) {
-            mc.player.sendMessage(new LiteralText("[bhack] Commands : fly, "), false);
+            mc.player.sendMessage(new LiteralText("[bhack] Commands : enable <module>, disable <module> "), false);
         }
 
-        if(message.equals(".fly")) {
-            mc.player.sendMessage(new LiteralText("[bhack] Usage : fly true, fly false"), false);
+        if(message.equals(".enable fly")) {
+            mc.player.sendMessage(new LiteralText("[bhack] Usage : enable fly, disable fly"), false);
+            mc.player.getAbilities().allowFlying = true;
         }
 
-        if (message.equals(".fly true")) {
+        if (message.equals(".disable fly")) {
             mc.player.getAbilities().allowFlying = true;
             mc.player.sendMessage(new LiteralText("[bhack] fly enabled"), false);
             ci.cancel();
