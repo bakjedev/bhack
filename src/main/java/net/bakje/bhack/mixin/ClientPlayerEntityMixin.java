@@ -3,7 +3,10 @@ package net.bakje.bhack.mixin;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
+import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
+import net.minecraft.network.packet.s2c.play.ChunkDataS2CPacket;
 import net.minecraft.network.packet.s2c.play.EntitySetHeadYawS2CPacket;
 import net.minecraft.text.LiteralText;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,15 +33,10 @@ public abstract class ClientPlayerEntityMixin {
 
         if (message.equals(".disable fly")) {
             mc.player.getAbilities().allowFlying = false;
-            mc.player.sendMessage(new LiteralText("[bhack] fly enabled"), false);
-            ci.cancel();
-        }
-
-        else if (message.equals(".fly false")) {
-            mc.player.getAbilities().allowFlying = false;
             mc.player.sendMessage(new LiteralText("[bhack] fly disabled"), false);
             ci.cancel();
         }
+
 
         else if (message.equals(".d") || message.equals(".dupe") || message.equals(".Dupe") || message.equals(".D")) {
             dotDBypsas();
@@ -46,48 +44,52 @@ public abstract class ClientPlayerEntityMixin {
         }
     }
     public void dotDBypsas() {
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
-        return;
+
+        if(mc.player.getVehicle() == null) {
+            return;
+        }
+
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
+       mc.player.networkHandler.sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
     }
+
 }
 
