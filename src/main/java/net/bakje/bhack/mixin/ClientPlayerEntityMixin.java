@@ -44,7 +44,7 @@ public abstract class ClientPlayerEntityMixin {
         }
     }
     public void dotDBypsas() {
-        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), (byte) 1000000000));
+        mc.getNetworkHandler().sendPacket(new EntitySetHeadYawS2CPacket(mc.player.getVehicle(), Byte.MAX_VALUE));
     }
 }
 
