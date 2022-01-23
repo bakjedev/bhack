@@ -25,10 +25,11 @@ public abstract class ClientPlayerEntityMixin {
         if(message.equals(".enable fly")) {
             mc.player.sendMessage(new LiteralText("[bhack] Usage : enable fly, disable fly"), false);
             mc.player.getAbilities().allowFlying = true;
+            ci.cancel();
         }
 
         if (message.equals(".disable fly")) {
-            mc.player.getAbilities().allowFlying = true;
+            mc.player.getAbilities().allowFlying = false;
             mc.player.sendMessage(new LiteralText("[bhack] fly enabled"), false);
             ci.cancel();
         }
