@@ -1,4 +1,4 @@
-package net.bakje.bhack;
+package net.bakje.bhack.modules;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;

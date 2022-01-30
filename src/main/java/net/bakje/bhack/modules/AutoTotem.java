@@ -1,4 +1,4 @@
-package net.bakje.bhack;
+package net.bakje.bhack.modules;
 
 import net.bakje.bhack.util.TimerUtil;
 import net.fabricmc.api.ClientModInitializer;

@@ -20,12 +20,12 @@
   "entrypoints": {
     "client": [
       "net.bakje.bhack.bhack",
-      "net.bakje.bhack.Yaw",
-      "net.bakje.bhack.ElytraEquip",
-      "net.bakje.bhack.AutoTotem",
-      "net.bakje.bhack.Boost",
-      "net.bakje.bhack.AutoCrystal",
-      "net.bakje.bhack.Aura"
+      "net.bakje.bhack.modules.Yaw",
+      "net.bakje.bhack.modules.ElytraEquip",
+      "net.bakje.bhack.modules.AutoTotem",
+      "net.bakje.bhack.modules.Boost",
+      "net.bakje.bhack.modules.AutoCrystal",
+      "net.bakje.bhack.modules.Aura"
     ]
   },
   "mixins": [
