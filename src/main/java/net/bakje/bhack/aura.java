@@ -38,7 +38,7 @@ public class aura implements ClientModInitializer {
             }
 
             while (binding2.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set auraRotations to " + aura), false);
+                client.player.sendMessage(new LiteralText("[bhack] Set auraRotations to " + auraRotations), false);
                 auraRotations =!auraRotations;
             }
 
