@@ -6,10 +6,6 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.packet.s2c.play.DisconnectS2CPacket;
-import net.minecraft.network.packet.s2c.play.EntityPositionS2CPacket;
 import net.minecraft.text.LiteralText;
 import org.lwjgl.glfw.GLFW;
 
@@ -32,6 +28,7 @@ public class yaw implements ClientModInitializer {
             if (!Yaw){
                 if (mc.player != null) {
                     mc.player.setYaw(Math.round(mc.player.headYaw/45)*45);
+
                 }
             }
         });

@@ -9,8 +9,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Locale;
-
 @Mixin(value={ClientPlayerEntity.class})
 public abstract class ClientPlayerEntityMixin {
     private static final MinecraftClient mc = MinecraftClient.getInstance();
@@ -24,7 +22,7 @@ public abstract class ClientPlayerEntityMixin {
             !message.equals(".toggle fly") &&
             !message.equals(".d") &&
             !message.equals(".server")) {
-            mc.player.sendMessage(new LiteralText("[bhack] Unkown or incomplete command, try .help for the list of commands."), false);
+            mc.player.sendMessage(new LiteralText("[bhack] Unknown or incomplete command, try .help for the list of commands."), false);
             ci.cancel();
         }
 

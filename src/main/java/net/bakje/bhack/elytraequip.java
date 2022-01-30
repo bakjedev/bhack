@@ -14,8 +14,6 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.util.Hand;
 import org.lwjgl.glfw.GLFW;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class elytraequip implements ClientModInitializer {
 
     private int elytraSlot;

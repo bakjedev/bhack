@@ -9,14 +9,9 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
-import net.minecraft.network.packet.s2c.play.EntitySetHeadYawS2CPacket;
-import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
-import net.minecraft.predicate.entity.DistancePredicate;
 import net.minecraft.text.LiteralText;
 import net.bakje.bhack.util.TimerUtil;
 import org.lwjgl.glfw.GLFW;
-
-import java.sql.Time;
 
 public class aura implements ClientModInitializer {
 
