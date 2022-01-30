@@ -66,11 +66,9 @@ public class aura implements ClientModInitializer {
                                 //just serverside
                                 mc.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.Full(mc.player.getX(), mc.player.getY(), mc.player.getZ(), (float) newYaw, (float) newPitch, mc.player.isOnGround()));
                             }
-
-                            if (timer.passed(600)){
+                            float k = mc.player.getAttackCooldownProgress(mc.getTickDelta());
+                            if (k==1) {
                                 mc.interactionManager.attackEntity(mc.player, b);
-                                timer.reset();
-
                             }
                         }
                     }
