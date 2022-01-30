@@ -15,34 +15,34 @@ import net.minecraft.util.math.BlockPos;
 import org.lwjgl.glfw.GLFW;
 
 
-public class crystalthing implements ClientModInitializer {
+public class AutoCrystal implements ClientModInitializer {
 
-    private boolean crystalthing=false;
+    private boolean AutoCrystal =false;
 
     @Override
     public void onInitializeClient() {
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("crystalthing", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("AutoCrystal", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 
             while (binding1.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set crystalthing to " + !crystalthing), false);
-                crystalthing =!crystalthing;
+                client.player.sendMessage(new LiteralText("[bhack] Set AutoCrystal to " + !AutoCrystal), false);
+                AutoCrystal =!AutoCrystal;
             }
 
-            if (crystalthing & mc.player != null){
-                for (Entity a: mc.world.getEntities()) {
-                    if (a instanceof EndCrystalEntity & mc.player.distanceTo(a) < 5 & mc.player.getHealth() > 10) {
-                        mc.interactionManager.attackEntity(mc.player, a);
+            if (AutoCrystal & mc.player != null){
+                for (Entity target: mc.world.getEntities()) {
+                    if (target instanceof EndCrystalEntity & mc.player.distanceTo(target) < 5 & mc.player.getHealth() > 10) {
+                        mc.interactionManager.attackEntity(mc.player, target);
                     }
-                    if (a instanceof PlayerEntity & mc.player.distanceTo(a) > 0.1 & mc.player.distanceTo(a) < 5) {
-                        double cx = a.getBlockX();
-                        double cy = a.getBlockY();
-                        double cz = a.getBlockZ();
+                    if (target instanceof PlayerEntity & mc.player.distanceTo(target) > 0.1 & mc.player.distanceTo(target) < 5) {
+                        double cx = target.getBlockX();
+                        double cy = target.getBlockY();
+                        double cz = target.getBlockZ();
                         if (mc.world.getBlockState(new BlockPos(cx+1, cy-1, cz)).isOf(Blocks.OBSIDIAN) ||
                                 mc.world.getBlockState(new BlockPos(cx+1, cy-1, cz)).isOf(Blocks.BEDROCK)) {
                             if (mc.world.getBlockState(new BlockPos(cx+1, cy, cz)).isOf(Blocks.AIR)) {
-                                client.player.sendMessage(new LiteralText("[bhack] crystal"), false);
+                                client.player.sendMessage(new LiteralText("[bhack] AutoCrystal"), false);
 
                             }
                         }

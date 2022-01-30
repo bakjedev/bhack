@@ -9,7 +9,7 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.LiteralText;
 import org.lwjgl.glfw.GLFW;
 
-public class yaw implements ClientModInitializer {
+public class Yaw implements ClientModInitializer {
 
     private boolean Yaw = false;
 

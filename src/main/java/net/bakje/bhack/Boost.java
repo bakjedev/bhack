@@ -9,22 +9,22 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.LiteralText;
 import org.lwjgl.glfw.GLFW;
 
-public class ecmefly implements ClientModInitializer {
+public class Boost implements ClientModInitializer {
 
-    private boolean ecmefly = false;
+    private boolean Boost = false;
 
     @Override
     public void onInitializeClient() {
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("ecmefly", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("Boost", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 
             while (binding1.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set ecmefly to " + !ecmefly), false);
-                ecmefly =!ecmefly;
+                client.player.sendMessage(new LiteralText("[bhack] Set Boost to " + !Boost), false);
+                Boost =!Boost;
             }
 
-            if (ecmefly){
+            if (Boost){
                 if (mc.player != null) {
                     mc.player.setVelocity(mc.player.getVelocity().x*1.1, mc.player.getVelocity().y, mc.player.getVelocity().z*1.1);
                 }

@@ -14,14 +14,14 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.util.Hand;
 import org.lwjgl.glfw.GLFW;
 
-public class elytraequip implements ClientModInitializer {
+public class ElytraEquip implements ClientModInitializer {
 
     private int elytraSlot;
 
     @Override
     public void onInitializeClient() {
         //this is for testing purposes. and learning how to find items in inventory, basically useless
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("Equip Elytra (test)", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("ElytraEquip", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 

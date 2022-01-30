@@ -12,36 +12,36 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.text.LiteralText;
 import org.lwjgl.glfw.GLFW;
 
-public class aura implements ClientModInitializer {
+public class Aura implements ClientModInitializer {
 
-    private boolean aura = false;
-    private boolean auraRotations = false;
+    private boolean Aura = false;
+    private boolean AuraRotations = false;
 
     @Override
     public void onInitializeClient() {
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("aura", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
-        KeyBinding binding2 = KeyBindingHelper.registerKeyBinding(new KeyBinding("auraRotations", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("Aura", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
+        KeyBinding binding2 = KeyBindingHelper.registerKeyBinding(new KeyBinding("AuraRotations", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 
             while (binding1.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set aura to " + !aura), false);
-                aura =!aura;
+                client.player.sendMessage(new LiteralText("[bhack] Set Aura to " + !Aura), false);
+                Aura =!Aura;
             }
 
             while (binding2.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set auraRotations to " + !auraRotations), false);
-                auraRotations =!auraRotations;
+                client.player.sendMessage(new LiteralText("[bhack] Set AuraRotations to " + !AuraRotations), false);
+                AuraRotations =!AuraRotations;
             }
 
-            if (aura & mc.player != null){
-                for (Entity b: mc.world.getEntities()) {
-                    if (b instanceof PlayerEntity) {
-                        if (mc.player.distanceTo(b) > 0.1 & mc.player.distanceTo(b) < 5) {
-                            if (auraRotations) {
-                                double dX = mc.player.getX() - b.getX();
-                                double dY = mc.player.getY() - b.getY();
-                                double dZ = mc.player.getZ() - b.getZ();
+            if (Aura & mc.player != null){
+                for (Entity target: mc.world.getEntities()) {
+                    if (target instanceof PlayerEntity) {
+                        if (mc.player.distanceTo(target) > 0.1 & mc.player.distanceTo(target) < 5) {
+                            if (AuraRotations) {
+                                double dX = mc.player.getX() - target.getX();
+                                double dY = mc.player.getY() - target.getY();
+                                double dZ = mc.player.getZ() - target.getZ();
 
                                 double DistanceXZ = Math.sqrt(dX * dX + dZ * dZ);
                                 double DistanceY = Math.sqrt(DistanceXZ * DistanceXZ + dY * dY);
@@ -53,19 +53,17 @@ public class aura implements ClientModInitializer {
                                     newYaw = newYaw + Math.abs(180 - newYaw) * 2;
                                 newYaw = (newYaw + 90);
 
-                                float headyaw = (float) newYaw;
 
                                 //client side
                                 //mc.player.setYaw((float) newYaw);
                                 //mc.player.setPitch((float) newPitch);
-                                //mc.player.setHeadYaw(headyaw);
 
                                 //just serverside
                                 mc.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.Full(mc.player.getX(), mc.player.getY(), mc.player.getZ(), (float) newYaw, (float) newPitch, mc.player.isOnGround()));
                             }
-                            float k = mc.player.getAttackCooldownProgress(mc.getTickDelta());
-                            if (k==1) {
-                                mc.interactionManager.attackEntity(mc.player, b);
+                            float cooldown = mc.player.getAttackCooldownProgress(mc.getTickDelta());
+                            if (cooldown==1) {
+                                mc.interactionManager.attackEntity(mc.player, target);
                             }
                         }
                     }

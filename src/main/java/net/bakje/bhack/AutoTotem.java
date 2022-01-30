@@ -15,18 +15,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import org.lwjgl.glfw.GLFW;
 
-public class autototem implements ClientModInitializer {
+public class AutoTotem implements ClientModInitializer {
 
     private boolean AutoTotem = false;
     public TimerUtil timer = new TimerUtil();
     @Override
     public void onInitializeClient() {
-        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("shittyAutoTotem", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
+        KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("AutoTotem", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 
             while (binding1.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set shittyAutoTotem to " + !AutoTotem), false);
+                client.player.sendMessage(new LiteralText("[bhack] Set AutoTotem to " + !AutoTotem), false);
                 AutoTotem =!AutoTotem;
             }
             // WARNING!!!! this autototem only moves totems from JUST your HOTBAR to your offhand
