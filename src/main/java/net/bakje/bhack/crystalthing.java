@@ -52,7 +52,7 @@ public class crystalthing implements ClientModInitializer {
                     }
                 }
                 for (Entity a: mc.world.getEntities()) {
-                    if (a instanceof EndCrystalEntity) {
+                    if (a instanceof EndCrystalEntity & mc.player.distanceTo(a) < 5) {
                         mc.interactionManager.attackEntity(mc.player, a);
                     }
                 }
