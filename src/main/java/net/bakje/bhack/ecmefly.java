@@ -11,21 +11,20 @@ import org.lwjgl.glfw.GLFW;
 
 public class ecmefly implements ClientModInitializer {
 
-    private boolean ecmefly;
+    private boolean ecmefly = false;
 
     @Override
     public void onInitializeClient() {
         KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("ecmefly", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
-        ecmefly =!ecmefly;
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 
             while (binding1.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set ecmefly to " + ecmefly), false);
+                client.player.sendMessage(new LiteralText("[bhack] Set ecmefly to " + !ecmefly), false);
                 ecmefly =!ecmefly;
             }
 
-            if (!ecmefly){
+            if (ecmefly){
                 if (mc.player != null) {
                     mc.player.setVelocity(mc.player.getVelocity().x*1.1, mc.player.getVelocity().y, mc.player.getVelocity().z*1.1);
                 }

@@ -10,34 +10,31 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.text.LiteralText;
-import net.bakje.bhack.util.TimerUtil;
 import org.lwjgl.glfw.GLFW;
 
 public class aura implements ClientModInitializer {
 
-    private boolean aura;
-    private boolean auraRotations;
-    public TimerUtil timer = new TimerUtil();
+    private boolean aura = false;
+    private boolean auraRotations = false;
 
     @Override
     public void onInitializeClient() {
         KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("aura", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
         KeyBinding binding2 = KeyBindingHelper.registerKeyBinding(new KeyBinding("auraRotations", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
-        aura =!aura;
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 
             while (binding1.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set aura to " + aura), false);
+                client.player.sendMessage(new LiteralText("[bhack] Set aura to " + !aura), false);
                 aura =!aura;
             }
 
             while (binding2.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set auraRotations to " + auraRotations), false);
+                client.player.sendMessage(new LiteralText("[bhack] Set auraRotations to " + !auraRotations), false);
                 auraRotations =!auraRotations;
             }
 
-            if (!aura & mc.player != null){
+            if (aura & mc.player != null){
                 for (Entity b: mc.world.getEntities()) {
                     if (b instanceof PlayerEntity) {
                         if (mc.player.distanceTo(b) > 0.1 & mc.player.distanceTo(b) < 5) {

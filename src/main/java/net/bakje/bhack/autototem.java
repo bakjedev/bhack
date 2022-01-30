@@ -17,23 +17,22 @@ import org.lwjgl.glfw.GLFW;
 
 public class autototem implements ClientModInitializer {
 
-    private boolean AutoTotem;
+    private boolean AutoTotem = false;
     public TimerUtil timer = new TimerUtil();
     @Override
     public void onInitializeClient() {
         KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("shittyAutoTotem", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
-        AutoTotem =!AutoTotem;
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
 
             while (binding1.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set shittyAutoTotem to " + AutoTotem), false);
+                client.player.sendMessage(new LiteralText("[bhack] Set shittyAutoTotem to " + !AutoTotem), false);
                 AutoTotem =!AutoTotem;
             }
             // WARNING!!!! this autototem only moves totems from JUST your HOTBAR to your offhand
             // when your offhand slot is empty, this is purely because when testing on ecme im scared
             // this also isnt silent swap at all and actually switches to your totem client and server side
-            if (!AutoTotem && mc.player != null) {
+            if (AutoTotem && mc.player != null) {
                 boolean hasTotem = mc.player.getOffHandStack().getItem() == Items.TOTEM_OF_UNDYING;
                 if (!hasTotem) {
                     for (int slot = 0; slot < 9; slot++){

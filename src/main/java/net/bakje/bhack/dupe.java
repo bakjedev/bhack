@@ -14,22 +14,21 @@ import org.lwjgl.glfw.GLFW;
 public class dupe implements ClientModInitializer {
 
     MinecraftClient mc = MinecraftClient.getInstance();
-    private boolean dupe;
+    private boolean dupe = false;
     private int a=0;
     public TimerUtil timer = new TimerUtil();
 
     @Override
     public void onInitializeClient() {
         KeyBinding binding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding("dupe", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "bhack"));
-        dupe =!dupe;
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
 
             while (binding1.wasPressed()) {
-                client.player.sendMessage(new LiteralText("[bhack] Set dupe to " + dupe), false);
+                client.player.sendMessage(new LiteralText("[bhack] Set dupe to " + !dupe), false);
                 dupe =!dupe;
             }
 
-            if (!dupe && mc.player != null){
+            if (dupe && mc.player != null){
                 client.player.sendMessage(new LiteralText("[bhack] waiting..."), false);
                 if (timer.passed(5000)) {
                     client.player.sendMessage(new LiteralText("[bhack] a"), false);
