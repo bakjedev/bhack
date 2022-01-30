@@ -8,6 +8,9 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
+import net.minecraft.network.packet.s2c.play.EntitySetHeadYawS2CPacket;
+import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
 import net.minecraft.predicate.entity.DistancePredicate;
 import net.minecraft.text.LiteralText;
 import net.bakje.bhack.util.TimerUtil;
@@ -60,14 +63,19 @@ public class aura implements ClientModInitializer {
 
                                 float headyaw = (float) newYaw;
 
-                                mc.player.setYaw((float) newYaw);
-                                mc.player.setPitch((float) newPitch);
-                                mc.player.setHeadYaw(headyaw);
+                                //client side
+                                //mc.player.setYaw((float) newYaw);
+                                //mc.player.setPitch((float) newPitch);
+                                //mc.player.setHeadYaw(headyaw);
+
+                                //just serverside
+                                mc.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.Full(mc.player.getX(), mc.player.getY(), mc.player.getZ(), (float) newYaw, (float) newPitch, mc.player.isOnGround()));
                             }
 
                             if (timer.passed(600)){
                                 mc.interactionManager.attackEntity(mc.player, b);
                                 timer.reset();
+
                             }
                         }
                     }
