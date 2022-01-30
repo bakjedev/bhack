@@ -24,7 +24,9 @@
       "net.bakje.bhack.elytraequip",
       "net.bakje.bhack.autototem",
       "net.bakje.bhack.ecmefly",
-      "net.bakje.bhack.dupe"
+      "net.bakje.bhack.dupe",
+      "net.bakje.bhack.crystalthing",
+      "net.bakje.bhack.aura"
     ]
   },
   "mixins": [
